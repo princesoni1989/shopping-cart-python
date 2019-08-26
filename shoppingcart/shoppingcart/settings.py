@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'models',
     'core',
 ]
 
@@ -75,7 +76,7 @@ WSGI_APPLICATION = 'shoppingcart.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-AUTH_USER_MODEL = 'core.Customers'
+AUTH_USER_MODEL = 'models.Customers'
 
 DATABASES = {
     'default': {
