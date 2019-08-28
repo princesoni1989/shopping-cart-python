@@ -3,8 +3,8 @@ from .orders import *
 
 class Payments(models.Model):
     seller = models.ForeignKey(SellerAddress, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomerAddress, on_delete=models.CASCADE)
-    product = models.OneToOneField(Products, on_delete=models.CASCADE)
+    # user = models.ForeignKey(CustomerAddress, on_delete=models.CASCADE)
+    # product = models.OneToOneField(Products, on_delete=models.CASCADE)
     orders = models.OneToOneField(Orders, on_delete=models.CASCADE)
     gateway = models.CharField(max_length=20)
     created_date = models.DateField(auto_now_add=True)
@@ -18,5 +18,5 @@ class Payments(models.Model):
         verbose_name_plural = "Payments"
 
     def __str__(self):
-        return self.user
+        return self.orders.address.users.first_name
 

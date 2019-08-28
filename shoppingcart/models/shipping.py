@@ -2,7 +2,6 @@ from .discounts import *
 
 
 class ShippingZones(models.Model):
-    products = models.ManyToManyField(Products)
     name = models.CharField(max_length=20)
     countries = models.CharField(max_length=20)
     city = models.CharField(max_length=20)
@@ -17,8 +16,7 @@ class ShippingZones(models.Model):
 
 
 class ShippingMethods(models.Model):
-    products = models.ManyToManyField(Products)
-    zone = models.ManyToManyField(ShippingZones)
+    zone = models.ForeignKey(ShippingZones, on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     max_order_price = models.FloatField()
     max_order_weight = models.FloatField()

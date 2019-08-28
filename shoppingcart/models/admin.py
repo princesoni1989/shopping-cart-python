@@ -9,12 +9,14 @@ from .wishlist import *
 
 # Register your models here.
 admin.site.register(Customers)
+admin.site.register(Addresses)
 admin.site.register(CustomerAddress)
 admin.site.register(SellerAddress)
 
 admin.site.register(ProductCategory)
 admin.site.register(Products)
 admin.site.register(ProductImages)
+admin.site.register(ProductColors)
 
 admin.site.register(Discounts)
 
@@ -25,5 +27,4 @@ admin.site.register(Orders)
 
 admin.site.register(Payments)
 
-admin.site.register(Wishlist)
 admin.site.register(WishlistItems)

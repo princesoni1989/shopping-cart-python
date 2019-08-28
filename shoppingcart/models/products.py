@@ -17,7 +17,6 @@ class ProductCategory(models.Model):
 
 class Products(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-    user = models.ForeignKey(Customers, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, blank=False)
     description = models.TextField(max_length=100)
     price = models.FloatField()
@@ -41,3 +40,16 @@ class ProductImages(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='product/', default='product/default.png')
 
+    class Meta:
+        verbose_name_plural = "Product Images"
+
+
+class ProductColors(models.Model):
+    product = models.ManyToManyField(Products)
+    color = models.TextField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = "Product Color"
+
+    def __str__(self):
+        return self.color

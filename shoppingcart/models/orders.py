@@ -2,7 +2,6 @@ from .shipping import *
 
 
 class Orders(models.Model):
-    users = models.ForeignKey(Customers, on_delete=models.CASCADE)
     address = models.ForeignKey(CustomerAddress, on_delete=models.CASCADE)
     discount = models.ForeignKey(Discounts, on_delete=models.CASCADE)
     products = models.ForeignKey(Products, on_delete=models.CASCADE)
@@ -18,5 +17,4 @@ class Orders(models.Model):
         verbose_name_plural = 'Orders'
 
     def __str__(self):
-        return self.users
-
+        return self.address.users.first_name

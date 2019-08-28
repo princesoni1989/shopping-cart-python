@@ -13,16 +13,29 @@ class Customers(AbstractUser):
         return self.first_name
 
 
-class CustomerAddress(models.Model):
-    users = models.ForeignKey(Customers, on_delete=models.CASCADE)
+class Addresses(models.Model):
     billing_address = models.CharField(max_length=250)
     shipping_address = models.CharField(max_length=250)
+    city = models.CharField(max_length=30)
+    state = models.CharField(max_length=30)
+    country = models.CharField(max_length=30)
+
+    class Meta:
+        verbose_name_plural = "Address"
+
+    def __str__(self):
+        return self.billing_address
+
+
+class CustomerAddress(models.Model):
+    users = models.ForeignKey(Customers, on_delete=models.CASCADE)
+    address = models.ForeignKey(Addresses, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "User Address"
 
     def __str__(self):
-        return self.users
+        return self.users.first_name
 
 
 class SellerAddress(models.Model):
@@ -38,4 +51,4 @@ class SellerAddress(models.Model):
         verbose_name_plural = "Seller Address"
 
     def __str__(self):
-        return self.users
+        return self.users.first_name
